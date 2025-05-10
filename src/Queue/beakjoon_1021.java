@@ -50,16 +50,16 @@ public class beakjoon_1021 {
                     }
                 }
 
-                int leftCount = (int) Math.abs(rightCount - deque.stream().count());
+                int leftCount = Math.abs(rightCount - deque.size());
 
                 if (leftCount > rightCount) {
                     //rightCount
-                    deque = RightMove(deque, findNumber);
+                    RightMove(deque, findNumber);
                     moveCount += rightCount;
 
                 } else {
                     //leftCount
-                    deque = LeftMove(deque, findNumber);
+                    LeftMove(deque, findNumber);
                     moveCount += leftCount;
                 }
             }
@@ -69,7 +69,7 @@ public class beakjoon_1021 {
 
     }
 
-    private static Deque<Integer> LeftMove(Deque<Integer> deque, int comp) {
+    private static void LeftMove(Deque<Integer> deque, int comp) {
 
         while (true) {
             deque.offerLast(deque.pollFirst());
@@ -79,10 +79,8 @@ public class beakjoon_1021 {
                 break;
             }
         }
-
-        return deque;
     }
-    private static Deque<Integer> RightMove(Deque<Integer> deque, int comp) {
+    private static void RightMove(Deque<Integer> deque, int comp) {
         while (true) {
             deque.offerFirst(deque.pollLast());
 
@@ -91,7 +89,5 @@ public class beakjoon_1021 {
                 break;
             }
         }
-
-        return deque;
     }
 }
